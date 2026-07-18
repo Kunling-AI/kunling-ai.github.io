@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { team } from '../../data/team';
+
+export const getStaticPaths = () => team.map((member) => ({ params: { slug: member.slug }, props: { member } }));
+
+const { member } = Astro.props;
+---
+
+<BaseLayout title={`${member.name} · KUNLING`} description={member.summary || `${member.name} at KUNLING.`}>
+  <section class="profile-page section-shell">
+    <div class="container profile-container">
+      <a class="back-link" href="/our-team/">← Back to Our Team</a>
+
+      <div class="profile-hero" data-reveal>
+        <div class="profile-photo">
+          <img src={member.img} alt={`Portrait of ${member.name}`} style={`object-position: ${member.imagePosition || 'center'};`} />
+        </div>
+        <div class="profile-intro">
+          <span class="section-kicker">KUNLING member</span>
+          <h1>{member.name}</h1>
+          {member.role && <p class="profile-role">{member.role}</p>}
+          {member.affiliation && <p class="profile-affiliation">{member.affiliation}</p>}
+          {member.summary && <p class="profile-summary">{member.summary}</p>}
+          {member.links?.length > 0 && (
+            <div class="profile-links">
+              {member.links.map((link) => (
+                <a class="round-social-link" href={link.url} target="_blank" rel="noreferrer" aria-label={`${member.name} ${link.label}`}>
+                  {link.label === 'GitHub' ? <img src="/assets/icons/github.svg" alt="" /> : <span>↗</span>}
+                  <small>{link.label}</small>
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div class="profile-content" data-reveal>
+        {member.bio && (
+          <section class="profile-block">
+            <span class="profile-label">Profile</span>
+            <p>{member.bio}</p>
+          </section>
+        )}
+
+        {member.interests?.length > 0 && (
+          <section class="profile-block">
+            <span class="profile-label">Research interests</span>
+            <div class="profile-interest-grid">
+              {member.interests.map((interest, index) => (
+                <div><span>0{index + 1}</span><strong>{interest}</strong></div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {member.currentFocus && (
+          <section class="profile-block focus-block">
+            <span class="profile-label">Current focus</span>
+            <p>{member.currentFocus}</p>
+          </section>
+        )}
+
+        {member.slogan && (
+          <blockquote class="profile-slogan">
+            <span>Personal note</span>
+            “{member.slogan}”
+          </blockquote>
+        )}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

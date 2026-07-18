@@ -1,0 +1,178 @@
+---
+---
+
+<section class="earth-hero" data-earth-stage aria-labelledby="hero-title">
+  <div class="earth-canvas-wrap" aria-hidden="true">
+    <canvas class="earth-canvas" data-earth-canvas></canvas>
+    <div class="earth-css-fallback" data-earth-fallback>
+      <span></span>
+    </div>
+    <div class="earth-aura"></div>
+  </div>
+
+  <div class="earth-hero-copy">
+    <p class="hero-kicker">AI × Ocean Geology × Earth Science</p>
+    <h1 id="hero-title">Welcome to <span>KUNLING</span></h1>
+    <p class="hero-subtitle">Knowledge-augmented Universal Neural Learning for Intelligent Numerical Geoscience</p>
+  </div>
+
+  <div class="earth-coordinate" aria-hidden="true">
+    <span class="coordinate-pulse"></span>
+    QINGDAO · 36.0671° N · 120.3826° E
+  </div>
+
+  <a class="scroll-cue" href="#mission">
+    <span>Scroll to explore</span>
+    <span aria-hidden="true">↓</span>
+  </a>
+</section>
+
+<script>
+  import * as THREE from 'three';
+  import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+  const stage = document.querySelector<HTMLElement>('[data-earth-stage]');
+  const canvas = stage?.querySelector<HTMLCanvasElement>('[data-earth-canvas]');
+  const fallback = stage?.querySelector<HTMLElement>('[data-earth-fallback]');
+
+  if (stage && canvas) {
+    try {
+      const renderer = new THREE.WebGLRenderer({
+        canvas,
+        alpha: true,
+        antialias: true,
+        powerPreference: 'high-performance',
+      });
+      renderer.setClearColor(0x000000, 0);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.08;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
+      camera.position.set(0, 0.15, 6.3);
+
+      const globe = new THREE.Group();
+      globe.rotation.z = -0.13;
+      scene.add(globe);
+
+      const loader = new THREE.TextureLoader();
+      const earthTexture = loader.load('/assets/earth/blue-marble.jpg', () => {
+        fallback?.setAttribute('hidden', '');
+        stage.classList.add('earth-ready');
+      });
+      earthTexture.colorSpace = THREE.SRGBColorSpace;
+      earthTexture.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+
+      const earth = new THREE.Mesh(
+        new THREE.SphereGeometry(2.18, 96, 64),
+        new THREE.MeshStandardMaterial({
+          map: earthTexture,
+          roughness: 0.84,
+          metalness: 0.02,
+        }),
+      );
+      earth.rotation.y = -1.82;
+      globe.add(earth);
+
+      const atmosphere = new THREE.Mesh(
+        new THREE.SphereGeometry(2.27, 72, 48),
+        new THREE.ShaderMaterial({
+          transparent: true,
+          side: THREE.BackSide,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false,
+          vertexShader: `
+            varying vec3 vNormal;
+            void main() {
+              vNormal = normalize(normalMatrix * normal);
+              gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+            }
+          `,
+          fragmentShader: `
+            varying vec3 vNormal;
+            void main() {
+              float intensity = pow(0.64 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 3.4);
+              gl_FragColor = vec4(0.42, 0.69, 1.0, max(0.0, intensity) * 0.8);
+            }
+          `,
+        }),
+      );
+      globe.add(atmosphere);
+
+      const wire = new THREE.Mesh(
+        new THREE.SphereGeometry(2.195, 48, 32),
+        new THREE.MeshBasicMaterial({
+          color: 0x9bc4ff,
+          wireframe: true,
+          transparent: true,
+          opacity: 0.027,
+          depthWrite: false,
+        }),
+      );
+      wire.rotation.y = earth.rotation.y;
+      globe.add(wire);
+
+      const orbit = new THREE.Mesh(
+        new THREE.TorusGeometry(2.78, 0.006, 8, 220),
+        new THREE.MeshBasicMaterial({ color: 0xe7b3d3, transparent: true, opacity: 0.36 }),
+      );
+      orbit.rotation.x = Math.PI / 2.7;
+      orbit.rotation.y = -0.35;
+      globe.add(orbit);
+
+      const ambient = new THREE.HemisphereLight(0xb9d9ff, 0x091326, 1.15);
+      scene.add(ambient);
+      const keyLight = new THREE.DirectionalLight(0xffffff, 3.1);
+      keyLight.position.set(-4.8, 3.3, 5.4);
+      scene.add(keyLight);
+      const rimLight = new THREE.DirectionalLight(0xa95f9d, 1.1);
+      rimLight.position.set(4.5, -1.2, -3.5);
+      scene.add(rimLight);
+
+      const controls = new OrbitControls(camera, canvas);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.045;
+      controls.enablePan = false;
+      controls.enableZoom = false;
+      controls.rotateSpeed = 0.34;
+      controls.autoRotate = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      controls.autoRotateSpeed = 0.28;
+
+      const resize = () => {
+        const width = stage.clientWidth;
+        const height = stage.clientHeight;
+        const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.6);
+        renderer.setPixelRatio(pixelRatio);
+        renderer.setSize(width, height, false);
+        camera.aspect = width / Math.max(height, 1);
+        camera.updateProjectionMatrix();
+        camera.position.z = width < 720 ? 7.25 : 6.3;
+      };
+
+      let running = true;
+      const observer = new IntersectionObserver(([entry]) => {
+        running = entry.isIntersecting;
+      }, { threshold: 0.02 });
+      observer.observe(stage);
+
+      const clock = new THREE.Clock();
+      const render = () => {
+        requestAnimationFrame(render);
+        if (!running || document.hidden) return;
+        const elapsed = clock.getElapsedTime();
+        orbit.rotation.z = elapsed * 0.045;
+        wire.rotation.y = earth.rotation.y - elapsed * 0.008;
+        controls.update();
+        renderer.render(scene, camera);
+      };
+
+      const resizeObserver = new ResizeObserver(resize);
+      resizeObserver.observe(stage);
+      resize();
+      render();
+    } catch {
+      stage.classList.add('earth-fallback-only');
+    }
+  }
+</script>

@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { researchProjects } from '../../data/research';
+---
+
+<BaseLayout title="Research · KUNLING" description="Six AI-for-Earth-Science research directions at KUNLING.">
+  <section class="subpage-hero research-page-hero">
+    <div class="container" data-reveal>
+      <span class="section-kicker">Research</span>
+      <h1>AI for a connected Earth.</h1>
+      <p>Our work links intelligent agents, geodynamic simulation, global marine geological data, physics-guided learning, and scientific visualization.</p>
+    </div>
+  </section>
+
+  <section class="research-list section-shell">
+    <div class="container">
+      {researchProjects.map((project) => (
+        <article class="research-detail" id={`project-${project.index}`} data-reveal>
+          <div class="research-detail-index">
+            <span>{project.index}</span>
+            <small>{project.shortName}</small>
+          </div>
+          <div class="research-detail-copy">
+            <h2>{project.name}</h2>
+            <p class="research-detail-subtitle">{project.subtitle}</p>
+            <p>{project.overview}</p>
+            <blockquote>{project.question}</blockquote>
+            <div class="research-tags">
+              {project.methods.map((method) => <span>{method}</span>)}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

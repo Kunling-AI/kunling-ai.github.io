@@ -1,11 +1,46 @@
-## **鲲灵智算**
+# KUNLING
 
-**“Let AI handle intelligence, let humans return to value creation！”**
+The official English-language website of KUNLING (鲲灵智算): Knowledge-augmented Universal Neural Learning for Intelligent Numerical Geoscience.
 
-**把AI的事交给AI,让人回归人的价值！**
+The group is affiliated with Ocean University of China and Laoshan Laboratory. The website is adapted from the open-source [SpaceLab](https://github.com/choucisan/SpaceLab) template and is deployed at <https://kunling-ai.github.io/>.
 
-**Research Together · Create Together · Share Together**
+## Local development
 
-**共研 · 共创 · 共享**
+```bash
+pnpm install
+pnpm dev
+```
 
-KUNLING: Knowledge-augmented Universal Neural Learning for Intelligent Numerical Geoscience. By Dr. Ze Liu (OUC). A core framework for multi-scale spheres coupling, intelligent data assimilation, and deep-time reconstruction. Bridging tectonic-climate-sedimentary modeling with high-fidelity paleogeomorphology and paleoenvironment inversion.
+Create a production build with:
+
+```bash
+pnpm build
+```
+
+## Three.js Earth
+
+The landing page uses Three.js and a local NASA Blue Marble texture. It does not require Mapbox, an API token, or a paid map service.
+
+Earth imagery credit: NASA/Goddard Space Flight Center Scientific Visualization Studio. Blue Marble Next Generation data courtesy of Reto Stöckli (NASA/GSFC) and NASA Earth Observatory.
+
+## Updating content
+
+- Research directions: `src/data/research.ts`
+- Team profiles: `src/data/team.ts`
+- Team photos: `public/assets/team/`
+- Brand logo: `public/assets/brand/kunling-logo.png`
+
+Missing member fields are omitted from the rendered profile rather than replaced with placeholder copy.
+
+## Routes
+
+- `/` — immersive Three.js Earth, group mission, research, PI, open source, and team
+- `/research/` — the six current research projects
+- `/our-team/` — PI and team directory
+- `/our-team/[slug]/` — individual profiles
+- `/open-source/` — public repositories
+- `/contact/` — contact details
+
+## Deployment
+
+The GitHub Actions workflow in `.github/workflows/deploy.yml` builds the Astro site and publishes `dist/` to GitHub Pages whenever `main` is updated.
