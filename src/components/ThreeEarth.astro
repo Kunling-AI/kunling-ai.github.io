@@ -11,9 +11,19 @@
   </div>
 
   <div class="earth-hero-copy">
-    <p class="hero-kicker">AI × Ocean Geology × Earth Science</p>
-    <h1 id="hero-title">Welcome to <span>KUNLING</span></h1>
-    <p class="hero-subtitle">Knowledge-augmented Universal Neural Learning for Intelligent Numerical Geoscience</p>
+    <p class="hero-kicker">KUNLING · Intelligent Numerical Geoscience</p>
+    <h1 id="hero-title">AI for a connected <span>Earth.</span></h1>
+    <p class="hero-subtitle">We connect intelligent agents, physical simulation, global marine data, and scientific visualization to study our planet across space and deep time.</p>
+    <div class="hero-actions">
+      <a class="button hero-primary-button" href="/research/">Explore our research <span aria-hidden="true">↗</span></a>
+      <a class="button hero-secondary-button" href="/our-team/">Meet the team</a>
+    </div>
+  </div>
+
+  <div class="hero-facts" aria-label="KUNLING at a glance">
+    <div><strong>06</strong><span>Research directions</span></div>
+    <div><strong>AI × Physics</strong><span>One connected workflow</span></div>
+    <div><strong>OUC</strong><span>Qingdao · China</span></div>
   </div>
 
   <div class="earth-coordinate" aria-hidden="true">
@@ -28,45 +38,66 @@
 </section>
 
 <script>
-  import * as THREE from 'three';
-  import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-
   const stage = document.querySelector<HTMLElement>('[data-earth-stage]');
   const canvas = stage?.querySelector<HTMLCanvasElement>('[data-earth-canvas]');
   const fallback = stage?.querySelector<HTMLElement>('[data-earth-fallback]');
 
-  if (stage && canvas) {
+  const initializeEarth = async () => {
+    if (!stage || !canvas) return;
+
     try {
-      const renderer = new THREE.WebGLRenderer({
+      const three = await import('../lib/three-earth');
+      const {
+        ACESFilmicToneMapping,
+        AdditiveBlending,
+        BackSide,
+        DirectionalLight,
+        Group,
+        HemisphereLight,
+        Mesh,
+        MeshBasicMaterial,
+        MeshStandardMaterial,
+        PerspectiveCamera,
+        Scene,
+        ShaderMaterial,
+        SphereGeometry,
+        SRGBColorSpace,
+        TextureLoader,
+        TorusGeometry,
+        WebGLRenderer,
+      } = three;
+      const { OrbitControls } = three;
+
+      const renderer = new WebGLRenderer({
         canvas,
         alpha: true,
         antialias: true,
         powerPreference: 'high-performance',
       });
       renderer.setClearColor(0x000000, 0);
-      renderer.outputColorSpace = THREE.SRGBColorSpace;
-      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.outputColorSpace = SRGBColorSpace;
+      renderer.toneMapping = ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1.08;
 
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
+      const scene = new Scene();
+      const camera = new PerspectiveCamera(42, 1, 0.1, 100);
       camera.position.set(0, 0.15, 6.3);
 
-      const globe = new THREE.Group();
+      const globe = new Group();
       globe.rotation.z = -0.13;
       scene.add(globe);
 
-      const loader = new THREE.TextureLoader();
+      const loader = new TextureLoader();
       const earthTexture = loader.load('/assets/earth/blue-marble.jpg', () => {
         fallback?.setAttribute('hidden', '');
         stage.classList.add('earth-ready');
       });
-      earthTexture.colorSpace = THREE.SRGBColorSpace;
+      earthTexture.colorSpace = SRGBColorSpace;
       earthTexture.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
 
-      const earth = new THREE.Mesh(
-        new THREE.SphereGeometry(2.18, 96, 64),
-        new THREE.MeshStandardMaterial({
+      const earth = new Mesh(
+        new SphereGeometry(2.18, 96, 64),
+        new MeshStandardMaterial({
           map: earthTexture,
           roughness: 0.84,
           metalness: 0.02,
@@ -75,12 +106,12 @@
       earth.rotation.y = -1.82;
       globe.add(earth);
 
-      const atmosphere = new THREE.Mesh(
-        new THREE.SphereGeometry(2.27, 72, 48),
-        new THREE.ShaderMaterial({
+      const atmosphere = new Mesh(
+        new SphereGeometry(2.27, 72, 48),
+        new ShaderMaterial({
           transparent: true,
-          side: THREE.BackSide,
-          blending: THREE.AdditiveBlending,
+          side: BackSide,
+          blending: AdditiveBlending,
           depthWrite: false,
           vertexShader: `
             varying vec3 vNormal;
@@ -100,9 +131,9 @@
       );
       globe.add(atmosphere);
 
-      const wire = new THREE.Mesh(
-        new THREE.SphereGeometry(2.195, 48, 32),
-        new THREE.MeshBasicMaterial({
+      const wire = new Mesh(
+        new SphereGeometry(2.195, 48, 32),
+        new MeshBasicMaterial({
           color: 0x9bc4ff,
           wireframe: true,
           transparent: true,
@@ -113,30 +144,31 @@
       wire.rotation.y = earth.rotation.y;
       globe.add(wire);
 
-      const orbit = new THREE.Mesh(
-        new THREE.TorusGeometry(2.78, 0.006, 8, 220),
-        new THREE.MeshBasicMaterial({ color: 0xe7b3d3, transparent: true, opacity: 0.36 }),
+      const orbit = new Mesh(
+        new TorusGeometry(2.78, 0.006, 8, 220),
+        new MeshBasicMaterial({ color: 0xe7b3d3, transparent: true, opacity: 0.36 }),
       );
       orbit.rotation.x = Math.PI / 2.7;
       orbit.rotation.y = -0.35;
       globe.add(orbit);
 
-      const ambient = new THREE.HemisphereLight(0xb9d9ff, 0x091326, 1.15);
+      const ambient = new HemisphereLight(0xb9d9ff, 0x091326, 1.15);
       scene.add(ambient);
-      const keyLight = new THREE.DirectionalLight(0xffffff, 3.1);
+      const keyLight = new DirectionalLight(0xffffff, 3.1);
       keyLight.position.set(-4.8, 3.3, 5.4);
       scene.add(keyLight);
-      const rimLight = new THREE.DirectionalLight(0xa95f9d, 1.1);
+      const rimLight = new DirectionalLight(0xa95f9d, 1.1);
       rimLight.position.set(4.5, -1.2, -3.5);
       scene.add(rimLight);
 
       const controls = new OrbitControls(camera, canvas);
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       controls.enableDamping = true;
       controls.dampingFactor = 0.045;
       controls.enablePan = false;
       controls.enableZoom = false;
       controls.rotateSpeed = 0.34;
-      controls.autoRotate = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      controls.autoRotate = !prefersReducedMotion;
       controls.autoRotateSpeed = 0.28;
 
       const resize = () => {
@@ -156,11 +188,11 @@
       }, { threshold: 0.02 });
       observer.observe(stage);
 
-      const clock = new THREE.Clock();
+      const animationStart = performance.now();
       const render = () => {
-        requestAnimationFrame(render);
+        if (!prefersReducedMotion) requestAnimationFrame(render);
         if (!running || document.hidden) return;
-        const elapsed = clock.getElapsedTime();
+        const elapsed = prefersReducedMotion ? 0 : (performance.now() - animationStart) / 1000;
         orbit.rotation.z = elapsed * 0.045;
         wire.rotation.y = earth.rotation.y - elapsed * 0.008;
         controls.update();
@@ -171,8 +203,24 @@
       resizeObserver.observe(stage);
       resize();
       render();
+
+      if (prefersReducedMotion) {
+        controls.enableDamping = false;
+        controls.addEventListener('change', () => renderer.render(scene, camera));
+      }
     } catch {
       stage.classList.add('earth-fallback-only');
+    }
+  };
+
+  if (stage && canvas) {
+    const idleWindow = window as Window & {
+      requestIdleCallback?: (callback: IdleRequestCallback, options?: IdleRequestOptions) => number;
+    };
+    if (idleWindow.requestIdleCallback) {
+      idleWindow.requestIdleCallback(() => void initializeEarth(), { timeout: 900 });
+    } else {
+      setTimeout(() => void initializeEarth(), 120);
     }
   }
 </script>
