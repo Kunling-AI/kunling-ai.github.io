@@ -17,6 +17,20 @@ const navigation = [
   { label: 'Open Source', href: '/open-source/', match: '/open-source' },
   { label: 'Contact', href: '/contact/', match: '/contact' },
 ];
+const hostLabPartners = [
+  { name: 'California Institute of Technology', href: 'https://www.caltech.edu/' },
+  { name: 'Scripps Institution of Oceanography', href: 'https://scripps.ucsd.edu/' },
+  { name: 'Texas A&M University', href: 'https://www.tamu.edu/' },
+  { name: 'Woods Hole Oceanographic Institution', href: 'https://www.whoi.edu/' },
+  { name: 'IFREMER', href: 'https://www.ifremer.fr/en' },
+  { name: 'GEOMAR Helmholtz Centre for Ocean Research Kiel', href: 'https://www.geomar.de/en' },
+  { name: 'First Institute of Oceanography', href: 'https://www.fio.org.cn/' },
+  { name: 'JAMSTEC', href: 'https://www.jamstec.go.jp/e/' },
+  { name: 'Second Institute of Oceanography', href: 'https://www.sio.org.cn/' },
+  { name: 'State Key Laboratory of Marine Environmental Science', href: 'https://mel.xmu.edu.cn/' },
+  { name: 'Guangzhou Marine Geological Survey', href: 'https://www.gmgs.cgs.gov.cn/' },
+  { name: 'EarthByte Group', href: 'https://www.earthbyte.org/' },
+];
 ---
 
 <!doctype html>
@@ -88,6 +102,7 @@ const navigation = [
             <span>KUNLING</span>
           </a>
           <p>Knowledge-augmented Universal Neural Learning for Intelligent Numerical Geoscience.</p>
+          <p class="footer-affiliation">Hosted at the <a href="https://geolab.ouc.edu.cn/main.htm" target="_blank" rel="noreferrer">Key Lab of Submarine Geosciences and Prospecting Techniques, MOE</a>, Ocean University of China.</p>
         </div>
         <div class="footer-links">
           {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
@@ -95,8 +110,20 @@ const navigation = [
         </div>
         <div class="footer-meta">
           <a href="mailto:liuze@ouc.edu.cn">liuze@ouc.edu.cn</a>
-          <span>Qingdao, China</span>
+          <span>238 Songling Road, Laoshan District</span>
+          <span>Qingdao 266100, Shandong, P.R. China</span>
           <span>© 2026 KUNLING</span>
+        </div>
+      </div>
+      <div class="footer-network">
+        <div class="footer-network-heading">
+          <span>Host laboratory network</span>
+          <a href="https://geolab.ouc.edu.cn/gljg_14316/list.htm" target="_blank" rel="noreferrer">View official network ↗</a>
+        </div>
+        <div class="footer-partners" aria-label="Cooperative institutions listed by the host laboratory">
+          {hostLabPartners.map((partner) => (
+            <a href={partner.href} target="_blank" rel="noreferrer">{partner.name}<span aria-hidden="true">↗</span></a>
+          ))}
         </div>
       </div>
       <div class="footer-credit">

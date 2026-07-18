@@ -21,7 +21,7 @@ export type Member = {
 export const leader = {
   name: 'Ze Liu',
   role: 'Principal Investigator · Associate Professor',
-  affiliation: 'Ocean University of China · LSlab',
+  affiliation: 'Ocean University of China · Key Lab of Submarine Geosciences and Prospecting Techniques, MOE',
   img: '/assets/team/liu-ze.png',
   email: 'liuze@ouc.edu.cn',
   officialPage: 'https://cmg.ouc.edu.cn/2024/1227/c30164a492019/page.htm',

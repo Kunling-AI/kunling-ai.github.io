@@ -1552,15 +1552,31 @@ select {
   font-size: 20px;
 }
 
-.contact-address a {
+.contact-address > a {
   font-family: var(--display);
   font-size: clamp(30px, 3.5vw, 48px);
   text-decoration: none;
 }
 
-.contact-address p {
-  margin: 12px 0 0;
+.contact-address address {
+  margin: 18px 0 0;
   color: var(--muted);
+  font-size: 14px;
+  font-style: normal;
+  line-height: 1.7;
+}
+
+.contact-address .contact-lab-link {
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.contact-address .contact-lab-link:hover,
+.contact-address .contact-lab-link:focus-visible {
+  color: var(--blue);
 }
 
 .recruitment-section {
@@ -1827,6 +1843,7 @@ select {
 }
 
 .footer-inner,
+.footer-network,
 .footer-credit {
   width: min(100%, var(--max));
   margin-inline: auto;
@@ -1861,6 +1878,17 @@ select {
   font-size: 13px;
 }
 
+.footer-brand-block .footer-affiliation {
+  margin-top: 14px;
+  color: #888b96;
+}
+
+.footer-affiliation a {
+  color: #d4d5da;
+  text-decoration-color: rgba(255, 255, 255, 0.3);
+  text-underline-offset: 3px;
+}
+
 .footer-links,
 .footer-meta {
   display: flex;
@@ -1878,6 +1906,60 @@ select {
 .footer-links a:hover,
 .footer-meta a:hover {
   color: #fff;
+}
+
+.footer-network {
+  margin-top: 62px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.footer-network-heading {
+  margin-bottom: 22px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  color: var(--faint);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.footer-network-heading a {
+  color: #aeb0b9;
+  text-decoration: none;
+}
+
+.footer-partners {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.footer-partners a {
+  min-height: 56px;
+  padding: 12px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  color: #8d909a;
+  font-size: 11px;
+  line-height: 1.35;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-partners a:hover,
+.footer-partners a:focus-visible {
+  color: #fff;
+}
+
+.footer-partners a span {
+  color: #565963;
 }
 
 .footer-credit {
@@ -1997,6 +2079,10 @@ select {
   }
 
   .people-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-partners {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -2211,7 +2297,7 @@ select {
     padding: 17px;
   }
 
-  .contact-address a {
+  .contact-address > a {
     font-size: 27px;
   }
 
@@ -2221,6 +2307,16 @@ select {
 
   .footer-inner {
     gap: 36px;
+  }
+
+  .footer-network-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer-partners {
+    grid-template-columns: 1fr;
   }
 
   .footer-credit {
