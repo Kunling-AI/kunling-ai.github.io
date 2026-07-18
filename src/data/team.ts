@@ -38,7 +38,7 @@ export const team: Member[] = [
   {
     slug: 'zhaorui-jiang',
     name: 'Zhaorui (Elijah) Jiang',
-    role: 'MPhil Student · Research Assistant',
+    role: 'MPhil Student',
     affiliation: 'Peking University · Monash University',
     img: '/assets/team/zhaorui-jiang.jpg',
     imagePosition: '64% center',
@@ -54,6 +54,8 @@ export const team: Member[] = [
   {
     slug: 'liu-hanzhang',
     name: 'Hanzhang Liu',
+    role: 'PhD Student',
+    affiliation: 'Peking University',
     img: '/assets/team/liu-hanzhang.jpg',
     imagePosition: 'center 35%',
     summary: 'Exploring systems that can plan, reason, and act through agentic AI.',
@@ -79,7 +81,7 @@ export const team: Member[] = [
     slug: 'chenyou-guo',
     name: 'Chenyou Guo',
     role: 'Undergraduate Student',
-    affiliation: 'Ocean University of China',
+    affiliation: 'Heriot-Watt University · Ocean University of China',
     img: '/assets/team/chenyou-guo.jpg',
     imagePosition: 'center 24%',
     summary: 'Building intelligent systems that reason over scientific domains, with an emphasis on robust multimodal learning.',
@@ -90,6 +92,8 @@ export const team: Member[] = [
   {
     slug: 'liu-haoyang',
     name: 'Haoyang Liu',
+    role: 'Undergraduate Student',
+    affiliation: 'Heriot-Watt University · Ocean University of China',
     img: '/assets/team/liu-haoyang.jpg',
     imagePosition: 'center 28%',
     summary: 'Exploring AI for science, algorithm research, and game development.',
@@ -101,6 +105,8 @@ export const team: Member[] = [
   {
     slug: 'yiran-xu',
     name: 'Yiran Xu',
+    role: 'Undergraduate Student',
+    affiliation: 'Heriot-Watt University · Ocean University of China',
     img: '/assets/team/yiran-xu.jpg',
     imagePosition: 'center 42%',
     summary: 'Researching intelligent geoscience visualization with AI and high-performance computing.',
