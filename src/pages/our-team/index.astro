@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { leader, team } from '../../data/team';
+---
+
+<BaseLayout title="Our Team · KUNLING" description="Meet the researchers and students of KUNLING.">
+  <section class="subpage-hero team-page-hero">
+    <div class="container" data-reveal>
+      <span class="section-kicker">People</span>
+      <h1>Our Team</h1>
+      <p>Curious minds working across artificial intelligence, ocean geology, geodynamics, scientific computing, and visualization.</p>
+    </div>
+  </section>
+
+  <section class="section-shell team-pi-section">
+    <div class="container">
+      <article class="pi-feature" data-reveal>
+        <div class="pi-photo">
+          <img src={leader.img} alt="Portrait of Ze Liu" />
+          <div class="photo-index"><span>PI</span><span>OUC · LAOSHAN LAB</span></div>
+        </div>
+        <div class="pi-content">
+          <span class="section-kicker">Group lead</span>
+          <p class="pi-role">{leader.role}</p>
+          <h2>{leader.name}</h2>
+          <p class="pi-affiliation">{leader.affiliation}</p>
+          <p class="pi-bio">{leader.bio}</p>
+          <div class="interest-list">
+            {leader.interests.map((interest) => <span>{interest}</span>)}
+          </div>
+          <div class="action-row">
+            <a class="button light-button" href={leader.officialPage} target="_blank" rel="noreferrer">Official profile ↗</a>
+            <a class="inline-link" href={`mailto:${leader.email}`}>{leader.email}</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-shell team-directory">
+    <div class="container">
+      <header class="section-heading" data-reveal>
+        <span class="section-kicker">Members</span>
+        <h2>The KUNLING constellation.</h2>
+      </header>
+
+      <div class="people-grid">
+        {team.map((member, index) => (
+          <a class="person-card" href={`/our-team/${member.slug}/`} data-reveal>
+            <div class="person-photo">
+              <img src={member.img} alt={`Portrait of ${member.name}`} loading="lazy" style={`object-position: ${member.imagePosition || 'center'};`} />
+              <span>0{index + 1}</span>
+            </div>
+            <div class="person-info">
+              <h3>{member.name}</h3>
+              {member.role && <p>{member.role}</p>}
+              {member.summary && <small>{member.summary}</small>}
+              <span>View profile ↗</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

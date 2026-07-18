@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ThreeEarth from '../components/ThreeEarth.astro';
+import { leader, team } from '../data/team';
+import { researchProjects } from '../data/research';
+---
+
+<BaseLayout>
+  <ThreeEarth />
+
+  <section class="mission-section section-shell" id="mission">
+    <div class="container mission-grid" data-reveal>
+      <div>
+        <span class="section-kicker">Our research position</span>
+        <h2>AI should do more than fit geoscience data.</h2>
+      </div>
+      <div class="mission-copy">
+        <p>KUNLING is building an AI for Earth Science research matrix across deep-Earth processes, lithospheric evolution, ocean geology, paleoclimate, biogeography, research automation, and intelligent visualization.</p>
+        <p class="mission-equation">AI agents + geodynamic simulation + global marine data + physics-guided learning + scientific visualization</p>
+      </div>
+    </div>
+    <div class="marquee" aria-label="Research principles">
+      <div>
+        <span>Research Together</span><i>✦</i><span>Create Together</span><i>✦</i><span>Share Together</span><i>✦</i>
+        <span>Research Together</span><i>✦</i><span>Create Together</span><i>✦</i><span>Share Together</span><i>✦</i>
+      </div>
+    </div>
+  </section>
+
+  <section class="research-preview section-shell">
+    <div class="container">
+      <header class="section-heading split-heading" data-reveal>
+        <div>
+          <span class="section-kicker">Research constellation</span>
+          <h2>Six projects. One connected Earth.</h2>
+        </div>
+        <div>
+          <p>Each project begins with a scientific question and connects algorithms to physical evidence, numerical systems, and interpretable output.</p>
+          <a class="inline-link" href="/research/">Explore all research →</a>
+        </div>
+      </header>
+
+      <div class="research-grid">
+        {researchProjects.map((project) => (
+          <a class="research-card" href={`/research/#project-${project.index}`} data-reveal>
+            <div class="research-card-top">
+              <span>{project.index}</span>
+              <span>{project.shortName}</span>
+            </div>
+            <h3>{project.name}</h3>
+            <p>{project.subtitle}</p>
+            <div class="research-tags">
+              {project.methods.slice(0, 3).map((method) => <span>{method}</span>)}
+            </div>
+            <span class="card-arrow" aria-hidden="true">↗</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="pi-section section-shell">
+    <div class="container">
+      <header class="section-heading" data-reveal>
+        <span class="section-kicker">Principal investigator</span>
+        <h2>Scientific questions first.</h2>
+      </header>
+
+      <article class="pi-feature" data-reveal>
+        <div class="pi-photo">
+          <img src={leader.img} alt="Portrait of Ze Liu" loading="lazy" />
+          <div class="photo-index"><span>PI</span><span>OUC · LAOSHAN LAB</span></div>
+        </div>
+        <div class="pi-content">
+          <p class="pi-role">{leader.role}</p>
+          <h3>{leader.name}</h3>
+          <p class="pi-affiliation">{leader.affiliation}</p>
+          <p class="pi-bio">{leader.bio}</p>
+          <div class="interest-list">
+            {leader.interests.map((interest) => <span>{interest}</span>)}
+          </div>
+          <div class="action-row">
+            <a class="button light-button" href={leader.officialPage} target="_blank" rel="noreferrer">Official profile ↗</a>
+            <a class="inline-link" href={`mailto:${leader.email}`}>{leader.email}</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="open-source-section section-shell">
+    <div class="container open-source-layout" data-reveal>
+      <div class="open-source-intro">
+        <span class="section-kicker">Open research</span>
+        <h2>Built in public, from questions to code.</h2>
+        <p>Our GitHub organization is the public home for research software, group documentation, and reproducible AI-for-geoscience work.</p>
+        <a class="button light-button" href="https://github.com/Kunling-AI" target="_blank" rel="noreferrer">Visit GitHub ↗</a>
+      </div>
+      <div class="repo-stack">
+        <a class="repo-card" href="https://github.com/Kunling-AI/Geo-Expert" target="_blank" rel="noreferrer">
+          <div><span>PUBLIC REPOSITORY</span><span>AI4SCIENCE</span></div>
+          <h3>Geo-Expert</h3>
+          <p>Towards expert-level geological reasoning via parameter-efficient fine-tuning.</p>
+          <strong>Explore repository ↗</strong>
+        </a>
+        <a class="repo-card muted-repo" href="https://github.com/Kunling-AI/.github" target="_blank" rel="noreferrer">
+          <div><span>ORGANIZATION</span><span>PROFILE</span></div>
+          <h3>Kunling-AI/.github</h3>
+          <p>The public mission, identity, and research framework of the group.</p>
+          <strong>Explore repository ↗</strong>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="team-preview-section section-shell">
+    <div class="container">
+      <header class="section-heading split-heading" data-reveal>
+        <div>
+          <span class="section-kicker">Our team</span>
+          <h2>Different disciplines.<br />One shared horizon.</h2>
+        </div>
+        <a class="inline-link align-end" href="/our-team/">Meet the whole team →</a>
+      </header>
+
+      <div class="people-grid compact-people-grid">
+        {team.map((member, index) => (
+          <a class="person-card" href={`/our-team/${member.slug}/`} data-reveal>
+            <div class="person-photo">
+              <img src={member.img} alt={`Portrait of ${member.name}`} loading="lazy" style={`object-position: ${member.imagePosition || 'center'};`} />
+              <span>0{index + 1}</span>
+            </div>
+            <div class="person-info">
+              <h3>{member.name}</h3>
+              {member.role && <p>{member.role}</p>}
+              <span>View profile ↗</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="closing-section section-shell">
+    <div class="container closing-panel" data-reveal>
+      <img src="/assets/brand/kunling-logo.png" alt="" />
+      <span class="section-kicker">KUNLING</span>
+      <h2>“Let AI handle intelligence,<br />let humans return to value creation.”</h2>
+      <p>Research Together · Create Together · Share Together</p>
+      <a class="button light-button" href="/contact/">Contact the group →</a>
+    </div>
+  </section>
+</BaseLayout>

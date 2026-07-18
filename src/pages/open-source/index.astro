@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Open Source · KUNLING" description="Public software and research repositories from KUNLING.">
+  <section class="subpage-hero open-source-page-hero">
+    <div class="container" data-reveal>
+      <span class="section-kicker">Open source</span>
+      <h1>Research that can be inspected, reused, and extended.</h1>
+      <p>KUNLING uses GitHub to share scientific software, technical documentation, and reproducible research outputs.</p>
+    </div>
+  </section>
+
+  <section class="repo-directory section-shell">
+    <div class="container repo-directory-grid">
+      <a class="repo-card featured-repo" href="https://github.com/Kunling-AI/Geo-Expert" target="_blank" rel="noreferrer" data-reveal>
+        <div><span>PUBLIC REPOSITORY</span><span>ICML 2026 WORKSHOP · AI4SCIENCE</span></div>
+        <h2>Geo-Expert</h2>
+        <p>Towards Expert-Level Geological Reasoning via Parameter-Efficient Fine-Tuning.</p>
+        <strong>Explore repository ↗</strong>
+      </a>
+      <a class="repo-card featured-repo muted-repo" href="https://github.com/Kunling-AI/.github" target="_blank" rel="noreferrer" data-reveal>
+        <div><span>ORGANIZATION</span><span>APACHE-2.0</span></div>
+        <h2>Kunling-AI/.github</h2>
+        <p>The organization profile, mission, research identity, and shared public documentation.</p>
+        <strong>Explore repository ↗</strong>
+      </a>
+    </div>
+  </section>
+</BaseLayout>
