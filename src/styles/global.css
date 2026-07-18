@@ -1492,9 +1492,13 @@ select {
 
 .contact-center > p {
   max-width: 700px;
-  margin: 28px auto 54px;
+  margin: 28px auto 18px;
   color: var(--muted);
   font-size: 18px;
+}
+
+.contact-join-link {
+  margin-bottom: 54px;
 }
 
 .contact-orbits {
@@ -1557,6 +1561,263 @@ select {
 .contact-address p {
   margin: 12px 0 0;
   color: var(--muted);
+}
+
+.recruitment-section {
+  scroll-margin-top: 100px;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(79, 121, 200, 0.15), transparent 28%),
+    linear-gradient(180deg, #05070b, var(--black));
+  border-top: 1px solid var(--line);
+}
+
+.opportunity-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.opportunity-card {
+  min-height: 350px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 100% 0, rgba(89, 132, 201, 0.15), transparent 42%),
+    rgba(15, 17, 23, 0.72);
+}
+
+.opportunity-card:nth-child(2) {
+  background:
+    radial-gradient(circle at 100% 0, rgba(186, 102, 158, 0.14), transparent 42%),
+    rgba(15, 17, 23, 0.72);
+}
+
+.opportunity-card:nth-child(3) {
+  background:
+    radial-gradient(circle at 100% 0, rgba(225, 131, 78, 0.1), transparent 42%),
+    rgba(15, 17, 23, 0.72);
+}
+
+.opportunity-card > span {
+  color: var(--faint);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.opportunity-card h3 {
+  margin: auto 0 20px;
+  font-family: var(--display);
+  font-size: clamp(34px, 3vw, 48px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+.opportunity-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.candidate-panel {
+  margin-top: 20px;
+  padding: 34px 38px;
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1.4fr) minmax(260px, 0.6fr);
+  gap: 34px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.candidate-panel > span {
+  color: var(--pink);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.candidate-panel p,
+.candidate-panel strong {
+  margin: 0;
+}
+
+.candidate-panel p {
+  color: #c9cad1;
+  font-size: 14px;
+}
+
+.candidate-panel strong {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 550;
+}
+
+.recruitment-detail-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.recruitment-detail-card {
+  padding: clamp(34px, 4vw, 52px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 100% 0, rgba(77, 121, 198, 0.13), transparent 38%),
+    rgba(11, 13, 18, 0.76);
+}
+
+.recruitment-detail-card.accent-card {
+  background:
+    radial-gradient(circle at 100% 0, rgba(186, 102, 158, 0.13), transparent 38%),
+    rgba(11, 13, 18, 0.76);
+}
+
+.recruitment-detail-card h3,
+.research-support-panel h3 {
+  margin: 0 0 30px;
+  font-family: var(--display);
+  font-size: clamp(38px, 3.6vw, 54px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+.recruitment-detail-card ul,
+.research-support-panel ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.recruitment-detail-card li,
+.research-support-panel li {
+  position: relative;
+  padding: 15px 0 15px 22px;
+  border-bottom: 1px solid var(--line);
+  color: #c4c6ce;
+}
+
+.recruitment-detail-card li::before,
+.research-support-panel li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 25px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 10px rgba(156, 200, 247, 0.55);
+}
+
+.accent-card li::before,
+.research-support-panel li:nth-child(2n)::before {
+  background: var(--pink);
+  box-shadow: 0 0 10px rgba(221, 161, 198, 0.5);
+}
+
+.research-support-panel {
+  margin-top: 20px;
+  padding: clamp(36px, 5vw, 68px);
+  display: grid;
+  grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(50px, 8vw, 110px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 34px;
+  color: #101116;
+  background:
+    radial-gradient(circle at 8% 12%, rgba(156, 200, 247, 0.65), transparent 34%),
+    #eeeef0;
+}
+
+.research-support-panel .section-kicker,
+.research-support-panel li {
+  color: #34363e;
+}
+
+.research-support-panel .section-kicker::before {
+  background: linear-gradient(90deg, var(--blue-deep), #a94e86);
+}
+
+.research-support-panel ul {
+  border-color: rgba(13, 15, 20, 0.18);
+}
+
+.research-support-panel li {
+  border-color: rgba(13, 15, 20, 0.18);
+}
+
+.research-support-panel li strong {
+  color: #0a0b0e;
+}
+
+.application-panel {
+  margin-top: 20px;
+  padding: clamp(36px, 5vw, 68px);
+  display: grid;
+  grid-template-columns: minmax(280px, 0.75fr) minmax(0, 1.25fr);
+  gap: clamp(50px, 8vw, 110px);
+  border: 1px solid var(--line);
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at 80% 0, rgba(91, 122, 184, 0.23), transparent 40%),
+    #0b0d12;
+}
+
+.application-panel h3 {
+  margin: 0 0 24px;
+  font-family: var(--display);
+  font-size: clamp(40px, 4vw, 58px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.application-panel > div:first-child > p,
+.application-details > p {
+  color: var(--muted);
+}
+
+.application-details > p {
+  margin: 0 0 24px;
+  font-size: 18px;
+}
+
+.application-details > p a {
+  color: #fff;
+}
+
+.application-details ol {
+  margin: 0 0 34px;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.application-details li {
+  padding: 18px 0;
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 14px;
+  border-bottom: 1px solid var(--line);
+  color: #c6c8d0;
+}
+
+.application-details li span {
+  color: var(--pink);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
 }
 
 .site-footer {
@@ -1910,6 +2171,34 @@ select {
 
   .profile-interest-grid {
     grid-template-columns: 1fr;
+  }
+
+  .opportunity-grid,
+  .recruitment-detail-grid,
+  .research-support-panel,
+  .application-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .candidate-panel {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 26px;
+  }
+
+  .opportunity-card {
+    min-height: 300px;
+    padding: 26px;
+  }
+
+  .application-panel {
+    gap: 36px;
+    border-radius: 26px;
+  }
+
+  .research-support-panel {
+    gap: 34px;
+    border-radius: 26px;
   }
 
   .contact-orbits {

@@ -2,12 +2,13 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Contact · KUNLING" description="Contact KUNLING at Ocean University of China.">
+<BaseLayout title="Contact & Research Recruitment · KUNLING" description="Contact KUNLING and explore undergraduate, master’s, and PhD research opportunities in AI for Earth Science.">
   <section class="contact-hero">
     <div class="container contact-center" data-reveal>
       <span class="section-kicker">Connect</span>
       <h1>Start a conversation.</h1>
       <p>For research conversations, scientific collaboration, and open-source work, reach out through the channels below.</p>
+      <a class="inline-link contact-join-link" href="#join-kunling">View student opportunities ↓</a>
       <div class="contact-orbits">
         <a href="mailto:liuze@ouc.edu.cn" aria-label="Email Ze Liu">
           <img src="/assets/icons/gmail.svg" alt="" />
@@ -27,6 +28,104 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <strong>Ze Liu · Associate Professor</strong>
         <a href="mailto:liuze@ouc.edu.cn">liuze@ouc.edu.cn</a>
         <p>Ocean University of China · Qingdao, China</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="recruitment-section section-shell" id="join-kunling">
+    <div class="container">
+      <header class="section-heading split-heading" data-reveal>
+        <div>
+          <span class="section-kicker">Research recruitment</span>
+          <h2>Study the Earth with intelligence.</h2>
+        </div>
+        <p>We welcome senior undergraduates, master’s students, and PhD students who want to explore the next generation of AI × ocean geology × Earth science research.</p>
+      </header>
+
+      <div class="opportunity-grid">
+        <article class="opportunity-card" data-reveal>
+          <span>01 · Senior undergraduates</span>
+          <h3>Start with a real scientific question.</h3>
+          <p>Build sustained research experience beyond a practice project, with clear questions, experiments, and research outputs.</p>
+        </article>
+        <article class="opportunity-card" data-reveal>
+          <span>02 · Master’s students</span>
+          <h3>Develop depth across disciplines.</h3>
+          <p>Connect AI methods, scientific computing, and domain knowledge through a complete research workflow.</p>
+        </article>
+        <article class="opportunity-card" data-reveal>
+          <span>03 · PhD students</span>
+          <h3>Push an ambitious direction forward.</h3>
+          <p>Develop AI-native research tools and scientific discoveries around challenging Earth-system questions.</p>
+        </article>
+      </div>
+
+      <div class="candidate-panel" data-reveal>
+        <span>Backgrounds we welcome</span>
+        <p>Artificial intelligence · Computer science · Software engineering · Geophysics · Geology · Ocean science · Mathematics · Physics · Mechanics · Ecology · Biology · Geographic information science · Earth system science</p>
+        <strong>You do not need to know everything at the start. Curiosity, sustained progress, and a willingness to learn matter most.</strong>
+      </div>
+
+      <div class="recruitment-detail-grid">
+        <article class="recruitment-detail-card" data-reveal>
+          <span class="section-kicker">What we look for</span>
+          <h3>A strong foundation for research growth.</h3>
+          <ul>
+            <li>Interest in AI, scientific computing, ocean geology, or Earth science.</li>
+            <li>A working foundation in Python programming.</li>
+            <li>Willingness to learn knowledge from emerging interdisciplinary fields.</li>
+            <li>Capacity to commit consistent time to research training.</li>
+            <li>Ability to learn independently, read literature, run experiments, or contribute to scientific writing.</li>
+          </ul>
+        </article>
+
+        <article class="recruitment-detail-card accent-card" data-reveal>
+          <span class="section-kicker">Bonus experience</span>
+          <h3>Useful skills—not prerequisites.</h3>
+          <ul>
+            <li>PyTorch or TensorFlow.</li>
+            <li>Transformers, PINNs, neural operators, or LLM agents.</li>
+            <li>Geophysics, ocean geology, structural geology, or ecological data analysis.</li>
+            <li>Research papers, competitions, open-source projects, or a GitHub portfolio.</li>
+            <li>GMT, PyGMT, PyVista, xarray, NetCDF, or GIS tools.</li>
+            <li>Finite elements, finite differences, HPC, or Docker.</li>
+          </ul>
+        </article>
+      </div>
+
+      <section class="research-support-panel" data-reveal>
+        <div>
+          <span class="section-kicker">What you will gain</span>
+          <h3>Research training from question to publication.</h3>
+        </div>
+        <ul>
+          <li>Opportunities to participate in frontier AI for Science research projects.</li>
+          <li>End-to-end training in problem decomposition, model design, experimental analysis, and scientific writing.</li>
+          <li>Guidance from the supervisor and team on research ideas, technical routes, and writing.</li>
+          <li>Opportunities to contribute to papers, patents, and open-source projects, with clear authorship based on individual contributions.</li>
+          <li>Strong contributors may join SCI papers, academic conferences, or follow-on research projects.</li>
+          <li><strong>Research reward support of approximately ¥2,000–6,000</strong>, depending on completion, team contribution, and project arrangements.</li>
+          <li>Access to CPU/GPU computing, domestic and international foundation models, research accounts, data resources, and the team GitHub platform.</li>
+        </ul>
+      </section>
+
+      <div class="application-panel" data-reveal>
+        <div>
+          <span class="section-kicker">How to apply</span>
+          <h3>Tell us what you want to explore.</h3>
+          <p>If you want to contribute to a real exploration of future AI-native science—not only a practice project—we would like to hear from you.</p>
+        </div>
+        <div class="application-details">
+          <p>Email <a href="mailto:kunlinghire@126.com?cc=liuze@ouc.edu.cn&amp;subject=KUNLING%20Research%20Application">kunlinghire@126.com</a> and CC <a href="mailto:liuze@ouc.edu.cn">liuze@ouc.edu.cn</a> with:</p>
+          <ol>
+            <li><span>01</span>Your CV or résumé.</li>
+            <li><span>02</span>Your university, year of study, and major.</li>
+            <li><span>03</span>The project direction that interests you.</li>
+            <li><span>04</span>Relevant code, papers, competitions, course projects, or GitHub work.</li>
+            <li><span>05</span>Your estimated weekly time commitment.</li>
+          </ol>
+          <a class="button light-button" href="mailto:kunlinghire@126.com?cc=liuze@ouc.edu.cn&amp;subject=KUNLING%20Research%20Application">Apply by email →</a>
+        </div>
       </div>
     </div>
   </section>
