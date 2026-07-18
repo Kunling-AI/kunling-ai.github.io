@@ -2,7 +2,7 @@
 
 The official English-language website of KUNLING (鲲灵智算): Knowledge-augmented Universal Neural Learning for Intelligent Numerical Geoscience.
 
-The group is affiliated with Ocean University of China and Laoshan Laboratory. The website is adapted from the open-source [SpaceLab](https://github.com/choucisan/SpaceLab) template and is deployed at <https://kunling-ai.github.io/>.
+The group is affiliated with Ocean University of China and LSlab. The website is adapted from the open-source [SpaceLab](https://github.com/choucisan/SpaceLab) template and is deployed at <https://kunling-ai.github.io/>.
 
 ## Local development
 
