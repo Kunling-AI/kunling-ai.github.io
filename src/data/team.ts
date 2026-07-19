@@ -38,7 +38,7 @@ export const team: Member[] = [
   {
     slug: 'zhaorui-jiang',
     name: 'Zhaorui (Elijah) Jiang',
-    role: 'MPhil Student',
+    role: 'Visiting Student',
     affiliation: 'Peking University · Monash University',
     img: '/assets/team/zhaorui-jiang.jpg',
     imagePosition: '64% center',
@@ -54,7 +54,7 @@ export const team: Member[] = [
   {
     slug: 'liu-hanzhang',
     name: 'Hanzhang Liu',
-    role: 'PhD Student',
+    role: 'Visiting Student',
     affiliation: 'Peking University',
     img: '/assets/team/liu-hanzhang.jpg',
     imagePosition: 'center 35%',
