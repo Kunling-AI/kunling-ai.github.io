@@ -6,18 +6,20 @@ export type ResearchProject = {
   overview: string;
   question: string;
   methods: string[];
+  githubUrl?: string;
 };
 
 export const researchProjects: ResearchProject[] = [
   {
     index: '01',
     name: 'TectonOS',
-    shortName: 'AI Geodynamics Assistant',
-    subtitle: 'An AI-driven research assistant for geodynamic simulation.',
+    shortName: 'AI Co-Scientist Environment for Geodynamics',
+    subtitle: 'A harness for AI-assisted geodynamic research.',
     overview:
-      'TectonOS connects LLM agents, scientific computing, geodynamic solvers, automated visualization, and reproducible workflows. A researcher describes a scientific question; the system helps decompose it, select a physical model, generate parameters, run simulations, and interpret the results.',
-    question: 'Can AI help scientists complete the full geodynamic simulation workflow?',
-    methods: ['LLM agents', 'ASPECT · LaMEM · goSPL', 'Docker · HPC', 'PyVista · ParaView'],
+      'TectonOS is an AI-native research environment that connects scientific questions with agent orchestration, geodynamic solvers, parameter exploration, data processing, visualization, evaluation, and reproducible reporting. The system is being developed around ASPECT, LaMEM, and goSPL, with CLI-first scientific workflows and a supporting web interface.',
+    question: 'Can Earth scientists and AI agents work together across the full cycle of geodynamic research—from question formation to simulation, analysis, and reporting?',
+    methods: ['Harness Engineering', 'Scientific Agents', 'ASPECT · LaMEM · goSPL', 'Reproducible Workflows'],
+    githubUrl: 'https://github.com/Kunling-AI/TectonOS',
   },
   {
     index: '02',

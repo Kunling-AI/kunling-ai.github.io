@@ -3,12 +3,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { researchProjects } from '../../data/research';
 ---
 
-<BaseLayout title="Research · KUNLING" description="Six AI-for-Earth-Science research directions at KUNLING.">
+<BaseLayout title="Research · KUNLING" description="KUNLING research connects scientific agents, geodynamic simulation, marine geological data, physics-guided learning, and visualization.">
   <section class="subpage-hero research-page-hero">
     <div class="container" data-reveal>
       <span class="section-kicker">Research</span>
       <h1>Six directions. One connected Earth.</h1>
-      <p>Our work links intelligent agents, geodynamic simulation, global marine geological data, physics-guided learning, and scientific visualization.</p>
+      <p>Our research connects scientific agents, geodynamic simulation, global marine geological data, physics-guided learning, and visualization. Across these directions, we study how AI can participate in the complete scientific workflow while preserving physical reasoning, traceable evidence, and reproducibility.</p>
     </div>
   </section>
 
@@ -28,6 +28,9 @@ import { researchProjects } from '../../data/research';
             <div class="research-tags">
               {project.methods.map((method) => <span>{method}</span>)}
             </div>
+            {project.githubUrl && (
+              <a class="inline-link research-detail-link" href={project.githubUrl} target="_blank" rel="noreferrer">View project on GitHub ↗</a>
+            )}
           </div>
         </article>
       ))}
