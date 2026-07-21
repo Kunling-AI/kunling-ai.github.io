@@ -68,7 +68,7 @@ export const team: Member[] = [
     role: 'Undergraduate Researcher · TectonOS Lead',
     affiliation: 'Ocean University of China · Heriot-Watt University',
     img: '/assets/team/jinshuo-li.jpg',
-    imagePosition: 'center center',
+    imagePosition: '68% center',
     summary: 'Working on harness engineering for AI co-scientists, with TectonOS as a research environment for geodynamic simulation and Earth-system workflows.',
     interests: ['Harness Engineering', 'AI Co-Scientists', 'Scientific Agent Systems', 'Scientific Machine Learning'],
     bio: 'Jinshuo is pursuing a double-degree pathway in Computer Science at Ocean University of China and Robotics at Heriot-Watt University. At KUNLING, he leads the core research and engineering of TectonOS, connecting scientific agents with geodynamic solvers, parameter exploration, data processing, visualization, and evaluation.',
